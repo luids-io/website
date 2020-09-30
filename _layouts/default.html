@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Luis Guillén Civera">
+
+    <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="{{ site.baseurl }}/favicon-256x256.png" type="image/png">
+    <link rel="mask-icon" href="{{ site.baseurl }}/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>{% if page.title %}{{ page.title }} - luIDS{% else %}{{ site.title }}{% endif %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ site.baseurl }}/css/bootstrap.min.css?201702271450" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/flat-ui.min.css?201702271450" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/font-awesome.min.css?201702271450" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/font-linux.min.css?201702271450" rel="stylesheet">
+    {% if page.path contains "blog" %}
+    <link href="{{ site.baseurl }}/css/shariff.min.css?201703041615" rel="stylesheet">
+    {% endif %}
+    {% if page.path contains "screenshots" %}
+    <link href="{{ site.baseurl }}/css/magnific-popup.min.css?201706252330" rel="stylesheet">
+    {% endif %}
+    <!-- Custom styles for this template -->
+    <link href="{{ site.baseurl }}/css/main.min.css?202004161655" rel="stylesheet">
+    <link rel="canonical" href="https://luids.io{{ page.url }}/">
+    {% if page.path contains "blog" %}
+    <link type="application/atom+xml" rel="alternate" href="{{ site.baseurl }}/blog/feed.xml">
+    {% endif %}
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js?201702271450"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js?201702271450"></script>
+    <![endif]-->
+
+    <script>
+        // stub document ready function
+        window.q = [];
+        window.$ = function(f) {
+            q.push(f);
+        };
+    </script>
+</head>
+<body>
+    <section class="wrapper">
+
+        {% include navbar.html %}
+
+        {{ content }}
+
+        {% include footer.html %}
+
+        <script src="{{ site.baseurl }}/js/jquery.min.js"></script>
+        <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+        {% if page.path contains "screenshots" %}
+        <script src="{{ site.baseurl }}/js/magnific-popup.min.js"></script>
+        <script>
+            $(function() {
+                $(".thumbs").magnificPopup({
+                    delegate: 'a',
+                    type: 'image',
+                    closeOnContentClick: false,
+                    closeBtnInside: false,
+                    mainClass: 'mfp-with-zoom mfp-img-mobile',
+                    gallery: {
+                        enabled: true,
+                        navigateByImgClick: true,
+                        preload: [1, 1]
+                    },
+                    zoom: {
+                        enabled: true,
+                        duration: 300,
+                        opener: function(element) {
+                            return element.find('img');
+                        }
+                    }
+                })
+            });
+        </script>
+        {% endif %}
+        {% if page.path contains "blog" %}
+        <script src="{{ site.baseurl }}/js/shariff.min.js"></script>
+        {% endif %}
+        <script>
+            $(function() {
+                // execute queued functions
+                $.each(q, function(index, f){
+                    $(f)
+                });
+
+                var navFixed = false;
+                var nav = $(".navbar");
+                var navHeight = nav.height();
+                var content = $(".wrapper > .jumbotron");
+
+                function animateNavbar() {
+                    $(window).scroll(function () {
+                        if ($(this).scrollTop() > navHeight * .8) {
+                            if (!navFixed) {
+                                navFixed = true;
+
+                                content.css({
+                                    "margin-top": navHeight + "px"
+                                });
+                                nav.css({
+                                    "position": "fixed",
+                                    "top": -navHeight + "px",
+                                    "width": "100%"
+                                });
+                                fixScrollOffset();
+                                nav.stop().animate({"top": 0}, 350);
+                            }
+                        } else if ($(this).scrollTop() === 0) {
+                            nav.css({
+                                "position": "relative",
+                                "top": 0
+                            });
+                            content.css({
+                                "margin-top": 0
+                            });
+                            navFixed = false;
+                        }
+                    });
+                }
+
+                // correct scroll offset due to fixed navigation after page load
+                var isPageLoad = true;
+                function fixScrollOffset() {
+                    if (!nav.size()) {
+                        window.requestAnimationFrame(fixScrollOffset);
+                        return;
+                    }
+
+                    // only fix once after page has loaded
+                    if (isPageLoad) {
+                        isPageLoad = false;
+                    } else {
+                        return;
+                    }
+
+                    navHeight = nav.height();   // update height, just in case...
+                    var st = $(window).scrollTop();
+                    var offset = $(location.hash).offset();
+
+                    if (st > navHeight * .8 && offset) {
+                        $(window).scrollTop(offset.top - navHeight - 15);
+                    }
+                }
+
+                // enable smooth scrolling for anchor links
+                $("a[href^='#']").bind('click', function(e) {
+                    e.preventDefault();
+                    var target = $(this).attr("href");
+                    var offset = Math.max(0, ((target === '#') ? 0 : $(target).offset().top) - navHeight - 15);
+                    $('html, body').animate({scrollTop: offset}, 500, function() {
+                        if (history.pushState) {
+                            history.pushState(null, "", target);
+                        } else {
+                            location.hash = target;
+                        }
+                    });
+                });
+
+                $(window).bind("scroll", animateNavbar);
+                animateNavbar();
+
+                $(".eobfs").each(function() {
+                    $(this).text($(this).text().replace(/ 'AT` /, '@').replace(/ \^DOT\' /, '.'));
+                });
+                $(".eobfsl").each(function() {
+                    var e = $(this).text().replace(/ 'AT` /, '@').replace(/ \^DOT\' /, '.');
+                    $(this).html('<a href="mailto:' + e + '?body=Thank%20you%20for%20mailing%20us.%0APlease%20be%20sure%20to%20send%20only%20legal%20or%20security%20issues%20to%20this%20address.%0A%0AFor%20all%20non-confidential%20correspondence%20requiring%20no%20direct%20contact%20to%20a%20team%20member%2C%20please%20use%20%5Bmatrix%5D%2C%20IRC%2C%20or%20GitHub.%0A%0AOur%20PGP%20key%20is%20105D%208D57%20BB97%2046BD.">' + e + '</a>');
+                });
+
+                $("[title]").tooltip();
+            });
+        </script>
+    </section>
+</body>
+</html>
