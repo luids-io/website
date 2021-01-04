@@ -4,6 +4,142 @@ title: "El Proyecto"
 permalink: /project/
 ---
 
+<h3>Qué es</h3>
+<p><strong><sup>lu</sup>IDS</strong> es un <strong>conjunto de herramientas de código abierto </strong> cuya finalidad
+es <strong>controlar las conexiones cifradas que entran y salen de una red</strong>, advirtiendo de posibles conexiones
+de malware, fraudes y filtraciones de datos. Para llevar esta tarea a cabo, se divide el problema en pequeños servicios
+que se interconectan entre sí y que pueden ser desplegados en tus redes locales o en la nube. La mayor parte está 
+desarrollado en <i>Go</i> y usa <i>GRPC</i> como protocolo para la comunicación entre componentes.</p>
+
+<p>Los servicios que conforman <sup>lu</sup>IDS son los siguientes.</p>
+<div id="how-works" class="row">
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Listas negras</h5>
+	<p class="card-text">Se ha desarrollado el que posiblemente sea el <i>servicio de agregación de listas negras</i>
+	más potente en el mundo <i>open source</i>. Permite integrar múltiples fuentes de diferentes tipos de recursos: 
+	ips, hosts, hashes de fingerprints, certificados...<br>
+	Además de poder descargar automáticamente listas disponibles online, puede utilizar información de geolocalización,
+	utilizar la <i>API Safebrowsing de Google</i> o usar servidores DNS con zonas <i>DNSxL</i>.<br>
+	Junto al software se ha recopilado una <i><a href="https://luids-io.github.io/xlist-database/README.html">base de datos</a>
+	de más de 200 fuentes de listas gratuitas en Internet</i>.
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Servicio DNS</h5>
+	<p class="card-text">Se ha desarrollado un <i>servidor DNS</i> (basado en el popular <i>CoreDNS</i>) que, 
+	haciendo uso del sistema de listas negras, evita que los equipos de nuestra red realicen conexiones con
+	sitios de phising, malware, etc.<br>
+	Además de esto, dota de información a otros componentes del sistema <sup>lu</sup>IDS.
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Control de las resoluciones</h5>
+	<p class="card-text">Se ha desarrollado un novedoso <i>servicio de caché de resoluciones</i> que se integra
+	con el servicio DNS y está especialmente optimizado para conocer si un determinado equipo de nuestra red 
+	ha resuelto una dirección IP y un nombre. Esta caché permite descubrir tráfico de Botnets o exfiltraciones 
+	que traten de evadir posibles mecanismos de control que se realicen a nivel DNS.
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Análisis de tráfico distribuido</h5>
+	<p class="card-text">Se ha desarrollado un <i>servicio de análisis de tráfico multiprotocolo</i> 
+	(actualmente sólo implementado TLS) en el que se ha desacoplado la captura de tráfico del análisis. Esto
+	permite tanto que el análisis de tráfico pueda realizarse a partir de múltiples fuentes como que las fuentes 
+	puedan distribuir el tráfico a través de múltiples analizadores.<br> Para esta tarea, además de la posibilidad 
+	de enviar el tráfico "en bruto", se ha desarrollado un <i>protocolo específico para el análisis de tráfico TLS</i>.
+	Este protocolo permite ahorrar mucho ancho de banda al no enviar la parte cifrada de las comunicaciones.
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Notario TLS</h5>
+	<p class="card-text">Con la llegada de la nueva versión del protocolo <i>TLS 1.3</i> se oculta la parte 
+	de la negociación del cifrado en la que se intercambian los certificados. Esto proporciona mayor privacidad
+	a la comunicación pero evita que las herramientas de análisis puedan verificar los certificados contra
+	un conjunto de autoridades de certificación válidas.<br>
+	Por ello se ha desarrollado un novedoso <i>servicio de notaría TLS</i> que realiza conexiones "nulas"
+	de forma paralela a las comunicaciones para verificar la legitimidad de los servicios utilizados.
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Integración con sistemas cortafuegos</h5>
+	<p class="card-text">Se ha desarrollado un <i>servicio de integración con colas Netfilter</i> mediante 
+	el cual es posible realizar integraciones de sistemas cortafuegos Netfilter con algunos de los
+	servicios del IDS como las listas negras, caché de resoluciones, etc.
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Machine Learning</h5>
+	<p class="card-text">Se ha desarrollado un servicio de <i>broker de Machine Learning</i>. Este servicio 
+	ofrece una interfaz estable para la clasificación de las conexiones cifradas que entran y salen de nuestra
+	red, pudiendo de este modo utilizar diferentes modelos de clasificación, tecnologías (<i>OpenCPU</i>, 
+	<i>Tensorflow</i>, etc) e incluso múltiples sistemas de clasificación al mismo tiempo.
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Gestión de eventos</h5>
+	<p class="card-text">Se ha desarrollado un <i>servicio de gestión de eventos</i> con el que poder tratar
+	los eventos generados por los deferentes sistemas del IDS.
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Archivado</h5>
+	<p class="card-text">Se ha desarrollado un <i>servicio de archivado</i> con el que podremos almacenar 
+	el histórico de eventos, conexiones realizadas por los dispositivos de nuestra red, etc.  El servicio
+	proporciona interfaces de archivado para el resto de servicios del IDS y permite utilizar diferentes 
+	backends para el almacenamiento de los datos (<i>MongoDB</i>, <i>ElasticSearch</i>...).
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Contenedores e instrumentación</h5>
+    <p class="card-text">La mayor parte del software desarrollado se encuentra disponible en forma de 
+    contenedor para poder ser fácilmente desplegado por sistemas de orquestación como <i>Kubernetes</i>. 
+    Además, todos los servicios incluyen una interfaz para la instrumentación mediante <i>Prometheus</i>.
+	</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Breve historia</h3>
 <p><strong><sup>lu</sup>IDS</strong> es un
 <a href="https://www.luisguillen.com" target="_blank"><strong>proyecto personal</strong></a>
 que surge a partir de un proyecto de fin de máster en ciberseguridad, en el que
@@ -27,151 +163,7 @@ lo que ya tenía al <strong>I Concurso de Ideas y Aplicaciones Tecnológicas de 
 y resulté ser <a
 href="https://www.heraldo.es/noticias/aragon/teruel/2019/02/06/un-concurso-jovenes-talentos-para-luchar-contra-despoblacion-1291121-2261128.html" target="_blank">uno de los ganadores</a>.
 Aquel premio, junto a las ganas que tenía por lanzar algo propio, me dieron el
-impulso para continuar el proyecto.</p>
-
-<p>A estas alturas estarás diciendo, sí... todo está muy bien, pero
-<strong>¿cómo funciona?</strong>.
+impulso para continuar el proyecto.
 </p>
-
-<div id="how-works" class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Listas negras</h5>
-	<p class="card-text">Se ha desarrollado el que posiblemente sea el
-	<i>servicio de agregación de listas negras</i> más potente en el mundo
-	<i>open source</i>.  Permite integrar múltiples fuentes de diferentes
-	tipos de recursos: ips, hosts, hashes de fingerprints,
-	certificados...<br> Junto al software se ha recopilado una <i>base de
-	datos de más de 200 fuentes de listas gratuitas en Internet</i>.
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Sumidero DNS</h5>
-	<p class="card-text">Se ha desarrollado un <i>servidor DNS</i> (basado
-	en el popular <i>CoreDNS</i>) que, haciendo uso del sistema de listas
-	negras, evita que los equipos de nuestra red realicen conexiones con
-	sitios de phising, malware, etc.
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Control de las resoluciones</h5>
-	<p class="card-text">Se ha desarrollado un novedoso <i>servicio de
-	caché de resoluciones</i> especialmente optimizado para conocer
-	si un determinado equipo de nuestra red ha resuelto una dirección IP y
-	un nombre. Esta caché permite descubrir tráfico de Botnets o
-	exfiltraciones que traten de evadir posibles mecanismos de control que
-	se realicen a nivel DNS.
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Análisis de tráfico distribuido</h5>
-	<p class="card-text">Se ha desarrollado un <i>servicio de análisis de
-	tráfico multiprotocolo</i> (actualmente sólo implementado TLS)
-	en el que se ha desacoplado la captura de tráfico del análisis. Esto
-	permite tanto que el análisis de tráfico pueda realizarse a partir de
-	múltiples fuentes como que las fuentes puedan distribuir el tráfico a
-	través de múltiples analizadores.<br> Para esta tarea, además de la
-	posibilidad de enviar el tráfico "en bruto", se ha desarrollado un
-	<i>protocolo específico para el análisis de tráfico TLS</i>. Este
-	protocolo permite ahorrar mucho ancho de banda al no enviar la parte
-	cifrada de las comunicaciones.
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Notario TLS</h5>
-	<p class="card-text">Con la llegada de la nueva versión del protocolo
-	<i>TLS 1.3</i> se oculta la parte de la negociación del cifrado en la
-	que se intercambian los certificados. Esto proporciona mayor privacidad
-	a la comunicación pero evita que las herramientas de análisis puedan
-	verificar los certificados contra un conjunto de autoridades de
-	certificación válidas.<br>
-	Por ello se ha desarrollado un novedoso <i>servicio de notaría TLS</i>
-	que realiza conexiones "nulas" de forma paralela a las comunicaciones
-	para verificar la legitimidad de los servicios utilizados.
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Integración con sistemas cortafuegos</h5>
-	<p class="card-text">Se ha desarrollado un <i>servicio de integración
-	con colas Netfilter</i> mediante el cual el que es posible realizar
-	integraciones de sistemas cortafuegos Netfilter con algunos de los
-	servicios del IDS como las listas negras, caché de resoluciones, etc.
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Machine Learning</h5>
-	<p class="card-text">Se ha desarrollado un servicio de <i>broker de
-	Machine Learning</i>. Este servicio ofrece una interfaz estable para la
-	clasificación de las conexiones cifradas que entran y salen de nuestra
-	red, pudiendo de este modo utilizar diferentes modelos de
-	clasificación, tecnologías (<i>OpenCPU</i>, <i>Tensorflow</i>, etc) e
-	incluso múltiples sistemas de clasificación al mismo tiempo.
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Gestión de eventos</h5>
-	<p class="card-text">Se ha desarrollado un <i>servicio de gestión de
-	eventos</i> con el que poder tratar los eventos generados por los
-	deferentes sistemas del IDS.
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Archivado</h5>
-	<p class="card-text">Se ha desarrollado un <i>servicio de archivado</i>
-	con el que podremos almacenar el histórico de eventos, conexiones
-	realizadas por los dispositivos de nuestra red, etc.  El servicio
-	proporciona interfaces de archivado para el resto de servicios del IDS
-	y permite utilizar diferentes backends para el almacenamiento de los
-	datos (<i>MongoDB</i>, <i>ElasticSearch</i>...).
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Contenedores e instrumentación</h5>
-        <p class="card-text">La mayor parte del software desarrollado se encuentra
-	disponible en forma de contenedor para poder ser fácilmente desplegado
-	por sistemas de orquestación como <i>Kubernetes</i>. Además, todos los
-	servicios incluyen una interfaz para la instrumentación mediante
-	<i>Prometheus</i>.
-	</p>
-      </div>
-    </div>
-  </div>
-</div>
+<p align="center"><img src="{{ site.baseurl }}/images/premio_concurso_idea_lguillen.jpg" alt="Premio Concurso Idea - Luis Guillén Civera" width="50%"/></p>
 

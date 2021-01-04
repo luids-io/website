@@ -1,0 +1,55 @@
+---
+layout: pages
+title: Casos de uso
+permalink: /usecases/
+---
+Con las herramientas de <sup>lu</sup>IDS, los <strong>administradores de sistemas</strong> 
+podrán construir potentes sistemas de ciberseguridad en sus redes.
+
+<div class="container">
+<h3>Sumidero DNS</h3>
+<p>
+Un sumidero DNS permite <strong>controlar los dominios de internet a los que se acceden en una red</strong>, pudiendo:
+<ul>
+    <li>Implementar controles de acceso a internet</li>
+    <li>Evitar conexiones de botnets, ransomware, descargas de malware e intentos de phishing</li>
+    <li>Desactivar banners publicitarios, sitios de rastreo y criptominado</li>
+</ul>
+Gracias a su <strong>versatilidad y escalabilidad</strong>, nuestro sumidero puede ser desplegado en una <i>Raspberry pi</i>,
+en una <i>máquina virtual</i> o en un  <i>clúster Kubernetes</i> y ser utilizado en una casa, una escuela, una universidad, una pequeña empresa, una gran empresa, etc. 
+Todo dependerá de la complejidad que necesites intruducir.
+</p>
+<p><img src="{{ site.baseurl }}/images/dns-sinkhole-luids.svg" alt="Sumidero DNS con luIDS" width="100%" /></p>
+<p>
+Algunas características que lo hacen único:
+<ul>
+    <li>Su <strong>separación en microservicios</strong>: servidores de listas, servidores dns, servidores de eventos, servidores de archivo, cortafuegos.</li>
+    <li>Su <strong>integración con sistemas cortafuegos <i>netfilter</i></strong> permite controlar que los usuarios no puedan saltarse las restricciones impuestas en el sumidero.</li>
+    <li>Es capaz de <strong>comprobar también las respuestas DNS</strong> como los <i>CNAMES</i> y las <i>IPs</i>.</li>
+    <li>Puede guardar un <strong>archivo histórico con las consultas y respuestas de resolución DNS</strong>.</li>
+    <li>Implementa un <strong>sistema de vistas</strong> que, en función de quién hace la solicitud, puede comprobar en diferentes listas.</li>
+    <li>Dispone de un <strong>sistema de descarga y actualización de listas online y admite múltiples formatos</strong> (entre ellos, el que usa <i>PiHole</i>).</li>
+    <li>Integración con la <strong>API Google Safe Browsing</strong>.</li>
+    <li>Integración con <strong>zonas DNS RBL</strong>.</li>
+    <li>Puede usarse información de <strong>geolocalización de IPs</strong>.</li>
+    <li>Dispone de una completa <strong>base de datos de listas gratuitas online</strong>.</li>
+    <li>Admite diferentes <strong>políticas en función de puntuaciones o de pertenencia a listas</strong>.</li>
+    <li>Puede <strong>generar eventos y archivarlos</strong> en función de las políticas definidas.</li>
+    <li>Dispone de una <strong>interfaz web para el acceso al archivo</strong>.</li>
+</ul>
+</p>
+<p>
+No te lo pienses más y despliega <sup>lu</sup>IDS utilizando alguna de nuestras guías disponibles:
+<ul>
+    <li><strong><a href="https://docs.luids.io/luids/es/guide-basic-dns-sinkhole" target="_blank">Sumidero DNS básico</a></strong></li>
+    <li><strong><a href="https://docs.luids.io/luids/es/guide-advanced-dns-sinkhole" target="_blank">Sumidero DNS avanzado</a></strong></li>
+    <li><strong><a href="https://docs.luids.io/luids/es/guide-basic-dns-whitehole-nfqueue" target="_blank">Sumidero DNS de lista blanca con cortafuegos</a></strong></li>
+</ul>
+</p>
+</div>
+
+<div class="container">
+<h3>Analizador de tráfico TLS</h3>
+<p>MUY PRONTO</p>
+</div>
+

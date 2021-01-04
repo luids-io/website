@@ -10,15 +10,17 @@ layout: default
                 <object class="logo-graphic" type="image/svg+xml" data="{{ site.baseurl }}/images/luIDS_logo_colorete.svg" alt="luIDS logo"></object>
             </div>
             <div class="col-md-8">
-	    <h4><sup>lu</sup>IDS</h4>
-                <h6>Controla el tráfico cifrado que sale de la red de tu organización</h6>
+	    <h3><sup>lu</sup>IDS</h3>
+                <h4>Controla el tráfico cifrado que sale de la red de tu organización</h4>
                 <p>Muy probablemente, más del 90% del tráfico saliente de tu red sea cifrado.<br/>
                     En la mayoría de los casos, romper el cifrado de los usuarios no es una opción válida.<br/>
 		    <sup>lu</sup>IDS te ayuda a controlar las conexiones cifradas que entran y salen de tu red, advirtiendo de posibles conexiones de malware, fraudes y filtraciones de datos.
                 </p>
                 <p>
                     <a class="btn btn-primary btn-lg" href="{{ site.baseurl }}/project" role="button">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i> ¿Cómo lo hace?</a>
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> ¿Qué es?</a>
+                    <a class="btn btn-primary btn-lg" href="{{ site.baseurl }}/usecases" role="button">
+                        <i class="fa fa-question-circle" aria-hidden="true"></i> ¿Para qué?</a>
                     <a class="btn btn-secondary btn-lg" href="{{ site.baseurl }}/download" role="button">
                         <i class="fa fa-download" aria-hidden="true"></i> Lo quiero</a>
                 </p>
@@ -32,25 +34,31 @@ layout: default
     <div class="row">
         <div class="col-md-4">
             <h4><i class="fa fa-wrench" aria-hidden="true"></i> Bajo tu control</h4>
-            <p>El software es completamente configurable y puede adaptarse a diferentes
-	    escenarios.<br>
-	    Tú decides lo que necesitas y lo que no.
+            <p>El software está <strong>desarrollado por un administrador de sistemas para administradores de sistemas</strong>.
+            Nada de magia detrás de una GUI, separación clara de componentes, abundante documentación,
+            interfaces de servicio y monitorización, parametrización desde ficheros de configuración, 
+            argumentos y variables de entorno, cada fichero está donde debe estar, etc.<br>
+            En definitiva, <strong>tú controlas el sistema</strong>.
             </p>
         </div>
         <div class="col-md-4">
             <h4><i class="fa fa-cloud" aria-hidden="true"></i> Listo para la nube</h4>
-            <p>Su arquitectura permite tener los servicios que necesites tanto en local
-	    como en la nube.<br>
-	    Tú decides si externalizas o no.
+            <p>Su <strong>arquitectura de microservicios donde cada servicio hace una cosa y la hace bien</strong>, 
+            permite que puedas desplegar los componentes donde los necesites, tanto en local como en la nube,
+            y escalar al número de instancias requerido por tu carga de trabajo.<br>
+            Para ello hay disponibles contenedores <i>Docker</i> que puden ser desplegados fácilmente mediante
+            sistemas de orquestación como <i>Kubernetes</i>.<br>
+            En definitiva, <strong>tú decides si externalizas parte de tu infraestructura o no</strong>.
             </p>
         </div>
         <div class="col-md-4">
             <h4><i class="fa fa-heart-o" aria-hidden="true"></i> Open Source</h4>
-            <p> Disponer del código fuente es un requisito que debería cumplir cualquier
-	    producto de ciberseguridad.<br>
-	    Puedes auditarlo y adaptarlo si lo necesitas.
+            <p>El software se encuentra bajo una <strong>licencia libre <i>AGPL</i></strong>, eso quiere decir
+            que tienes las 4 libertades del software libre.
+            Además, disponer del código fuente es un requisito que debería cumplir cualquier
+            producto de ciberseguridad.<br>
+            En definitiva, <strong>tú puedes auditarlo y adaptarlo a tus necesidades si lo necesitas</strong>.
             </p>
         </div>
     </div>
 </div> <!-- /container -->
-
