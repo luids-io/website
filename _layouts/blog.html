@@ -6,7 +6,7 @@ layout: default
     <div class="container">
         <div class="row">
             <div class="col-md-12 jumbotron-title">
-		    <h4><sup>lu</sup>IDS Blog</h4>
+		    <h2>Blog</h2>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@ layout: default
 <div class="container post">
     <article>
         <header class="post-header">
-            <h4>{{ page.title }}</h4>
+            <h3>{{ page.title }}</h3>
             <p class="meta">
                 {% if page.author %} By {{ page.author }}<br>{% endif %}
                 Posted on <em class="date"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{ page.date | date: "%b %-d, %Y - %R %Z" }}</em>

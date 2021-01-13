@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +16,9 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <title>{% if page.title %}{{ page.title }} - luIDS{% else %}{{ site.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - {{ site.description }}{% endif %}</title>
+
+    {% seo title=false %}
 
     <!-- Bootstrap core CSS -->
     <link href="{{ site.baseurl }}/css/bootstrap.min.css?201702271450" rel="stylesheet">
@@ -33,7 +35,7 @@
     <link href="{{ site.baseurl }}/css/main.min.css?202004161655" rel="stylesheet">
     <link rel="canonical" href="https://luids.io{{ page.url }}/">
     {% if page.path contains "blog" %}
-    <link type="application/atom+xml" rel="alternate" href="{{ site.baseurl }}/blog/feed.xml">
+    <link type="application/atom+xml" rel="alternate" href="{{ site.baseurl }}/feed.xml">
     {% endif %}
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
