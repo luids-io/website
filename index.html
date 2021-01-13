@@ -10,11 +10,12 @@ layout: default
                 <object class="logo-graphic" type="image/svg+xml" data="{{ site.baseurl }}/images/luIDS_logo_colorete.svg" alt="luIDS logo"></object>
             </div>
             <div class="col-md-8">
-	    <h3><sup>lu</sup>IDS</h3>
+                <h3><sup>lu</sup>IDS</h3>
                 <h4>Controla el tráfico cifrado que sale de la red de tu organización</h4>
                 <p>Muy probablemente, más del 90% del tráfico saliente de tu red sea cifrado.<br/>
                     En la mayoría de los casos, romper el cifrado de los usuarios no es una opción válida.<br/>
-		    <sup>lu</sup>IDS te ayuda a controlar las conexiones cifradas que entran y salen de tu red, advirtiendo de posibles conexiones de malware, fraudes y filtraciones de datos.
+                <sup>lu</sup>IDS te ayuda a controlar las conexiones cifradas que entran y salen de tu red, 
+                advirtiendo de posibles conexiones de malware, fraudes y filtraciones de datos.
                 </p>
                 <p>
                     <a class="btn btn-primary btn-lg" href="{{ site.baseurl }}/project" role="button">
@@ -30,7 +31,51 @@ layout: default
 </div>
 
 <div class="container">
-    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form class="form-inline" method="post" name="subscribeform" id="subscribeform" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="sr-only" for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="" placeholder="jane.doe@example.com"/>
+                </div>
+                <input type="hidden" name="htmlemail" value="1" />
+                <input type="hidden" name="list[3]" value="signup" />
+                <input type="hidden" name="subscribe" value="subscribe"/>
+                <button class="btn btn-primary" onclick="if (checkform()) {submitForm();} return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i>Subscribe</button>
+                <br/>
+                <div id="result" style="color: red;"></div>
+            </form>
+
+            <script type="text/javascript">
+                function checkform() {
+                    re = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
+                    if (!(re.test(jQuery("#email").val()))) {
+                        jQuery("#result").empty().append("Por favor, introduce una dirección de email válida");
+                        jQuery("#email").focus();
+                        return false;
+                    }
+                    return true;
+                }
+                function submitForm() {
+                    data = jQuery('#subscribeform').serialize();
+                    jQuery.ajax(
+                        {   type: 'POST',
+                            data: data,
+                            url: 'https://www.luisguillen.com/lists/?p=asubscribe&id=1',
+                            dataType: 'html',
+                            success: function (data, status, request) {
+                                jQuery("#result").empty().append("Subscripción realizada.");
+                                jQuery('#email').val('');
+                                },
+                            error: function (request, status, error) { alert('Existen problemas transitorios, no hemos podido tramitar su subscripción.'); }
+                        }
+                    );
+                }
+            </script>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
     <div class="row">
         <div class="col-md-4">
             <h4><i class="fa fa-wrench" aria-hidden="true"></i> Bajo tu control</h4>
