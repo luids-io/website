@@ -7,15 +7,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1500"
-   height="1500"
-   viewBox="0 0 1500 1500"
+   width="200"
+   height="200"
+   viewBox="0 0 200 200"
    version="1.1"
    xml:space="preserve"
    style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2"
    id="svg42"
    sodipodi:docname="luIDS_logo_contorno.svg"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"><metadata
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"><metadata
    id="metadata48"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
@@ -38,16 +38,17 @@
    inkscape:window-height="824"
    id="namedview44"
    showgrid="false"
-   inkscape:zoom="0.20381984"
-   inkscape:cx="1240.5"
-   inkscape:cy="524.09602"
-   inkscape:window-x="0"
-   inkscape:window-y="0"
+   inkscape:zoom="1.1529791"
+   inkscape:cx="16.039484"
+   inkscape:cy="204.05312"
+   inkscape:window-x="423"
+   inkscape:window-y="69"
    inkscape:window-maximized="0"
-   inkscape:current-layer="svg42" />
+   inkscape:current-layer="svg42"
+   inkscape:document-rotation="0" />
     <g
    id="g91"
-   transform="translate(-485.51106,-737.68263)"><g
+   transform="matrix(0.13823036,0,0,0.13823036,-69.90783,-105.23625)"><g
      transform="matrix(240.43887,-67.151551,67.151551,240.43887,1171.5882,1043.398)"
      id="g32">
                 <path
